@@ -2,7 +2,7 @@
   <div class="about text-center">
     <h1>Welcome {{ user.name }}</h1>
     <img class="rounded" :src="account.picture" alt="" />
-    <p>{{ account.email }}</p>
+    <p>{{ user.email }}</p>
   </div>
 </template>
 

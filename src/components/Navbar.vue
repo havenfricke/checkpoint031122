@@ -91,14 +91,15 @@
 </template>
 
 <script>
-import { AuthService } from "../services/AuthService";
 import { AppState } from "../AppState";
 import { computed } from "vue";
+import { AuthService } from "../services/AuthService";
 export default {
   setup() {
     return {
       user: computed(() => AppState.user),
       async login() {
+        debugger;
         AuthService.loginWithPopup();
       },
       async logout() {
