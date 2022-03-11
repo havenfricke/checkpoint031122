@@ -1,36 +1,47 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
+      <div
+        class="
+          d-flex
+          align-items-center
+          justify-content-center
+          flex-column
+          align-items-center
+        "
+      >
         <img
+          class="rounded-circle hoverable"
           alt="logo"
-          src="../assets/img/cw-logo.png"
+          src="https://www.vhv.rs/dpng/d/244-2448537_spartan-png-world-wide-web-icon-png-transparent.png"
           height="45"
         />
       </div>
     </router-link>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarText"
-      aria-controls="navbarText"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
+    <div>
+      <form>
+        <input
+          class="rounded col-8"
+          type="text"
+          placeholder=" Find people..."
+        /><button class="btn-success rounded selectable mx-4">Go!</button>
+      </form>
+    </div>
+
+    <div
+      class="d-flex justify-content-end collapse navbar-collapse"
+      id="navbarText"
     >
-      <span class="navbar-toggler-icon" />
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto">
-        <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
-            About
-          </router-link>
-        </li>
-      </ul>
-      <span class="navbar-text">
+      <span class="navbar-text mx-0">
         <button
-          class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0"
+          class="
+            btn
+            selectable
+            text-success
+            lighten-30
+            text-uppercase
+            my-2 my-lg-0
+          "
           @click="login"
           v-if="!user.isAuthenticated"
         >
@@ -62,7 +73,11 @@
               </div>
             </router-link>
             <div
-              class="list-group-item list-group-item-action hoverable text-danger"
+              class="
+                list-group-item list-group-item-action
+                hoverable
+                text-danger
+              "
               @click="logout"
             >
               <i class="mdi mdi-logout"></i>
@@ -76,22 +91,22 @@
 </template>
 
 <script>
-import { AuthService } from '../services/AuthService'
-import { AppState } from '../AppState'
-import { computed } from 'vue'
+import { AuthService } from "../services/AuthService";
+import { AppState } from "../AppState";
+import { computed } from "vue";
 export default {
   setup() {
     return {
       user: computed(() => AppState.user),
       async login() {
-        AuthService.loginWithPopup()
+        AuthService.loginWithPopup();
       },
       async logout() {
-        AuthService.logout({ returnTo: window.location.origin })
-      }
-    }
-  }
-}
+        AuthService.logout({ returnTo: window.location.origin });
+      },
+    };
+  },
+};
 </script>
 
 <style scoped>
@@ -110,12 +125,17 @@ export default {
 a:hover {
   text-decoration: none;
 }
-.nav-link{
+.nav-link {
   text-transform: uppercase;
 }
-.navbar-nav .router-link-exact-active{
+.navbar-nav .router-link-exact-active {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+.hoverable:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.3);
+  transition: 10ms ease-in-out;
 }
 </style>
