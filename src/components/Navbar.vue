@@ -19,9 +19,10 @@
       </div>
     </router-link>
 
-    <router-link :to="{ name: 'Search' }">
-      <button class="btn btn-success">Search Users</button>
-    </router-link>
+    <form action="">
+      <input class="rounded-start" />
+      <button class="btn-success">Search Users</button>
+    </form>
 
     <div
       class="d-flex justify-content-end collapse navbar-collapse"

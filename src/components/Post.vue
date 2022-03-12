@@ -12,10 +12,11 @@
       justify-content-around
     "
   >
-    <p class="">Post created {{ new Date(post.createdAt) }}</p>
-    <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-end align-items-center">
+      <p class="col-8">Post created {{ new Date(post.createdAt) }}</p>
       <div
         class="
+          fs-2
           col-lg-1 col-md-1 col-sm-4
           p-2
           bg-secondary
@@ -26,11 +27,11 @@
       >
         <i
           type="button"
-          class="mdi p-1 hoverable rounded-circle mdi-delete selectable"
+          class="mdi mx-1 p-1 hoverable rounded-circle mdi-delete selectable"
         ></i>
         <i
           type="button"
-          class="mdi p-1 hoverable rounded-circle mdi-pencil selectable"
+          class="mdi p-1 mx-1 hoverable rounded-circle mdi-pencil selectable"
         ></i>
       </div>
     </div>
@@ -47,7 +48,7 @@
         selectable
         hoverable
       "
-      alt="broken image"
+      alt=""
     />
     <div class="col-10 p-3 fs-2">
       {{ post.creator.name }}
@@ -67,11 +68,13 @@
     </div>
     <div class="row p-3 d-flex justify-content-end">
       <i
+        @click="like"
         type="button"
         class="
+          fs-2
           mdi mdi-thumb-up
-          col-lg-1 col-md-1 col-sm-2
-          rounded-circle
+          col-lg-1 col-md-1 col-sm-1
+          rounded
           selectable
           hoverable
           text-center
@@ -85,6 +88,10 @@
 </template>
 
 <script>
+import { computed, watchEffect } from "@vue/runtime-core";
+import { AppState } from "../AppState";
+import { postsService } from "../services/PostsService";
+import { logger } from "../utils/Logger";
 export default {
   props: {
     post: {
@@ -92,8 +99,14 @@ export default {
       required: true,
     },
   },
-  setup() {
-    return {};
+  setup(props) {
+    return {
+      async like() {
+        postsService.like(props.post.id);
+        debugger;
+        logger.log(props.post.id);
+      },
+    };
   },
 };
 </script>
