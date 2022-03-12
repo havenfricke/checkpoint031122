@@ -22,46 +22,32 @@
       <p><i class="mdi mdi-pencil"> </i>{{ account.linkedin }}</p>
       <p><i class="mdi mdi-pencil"> </i>{{ account.github }}</p>
       <p><i class="mdi mdi-pencil"> </i>{{ account.resume }}</p>
-      <div class="d-flex justify-content-end">
-        <button
-          class="btn btn-secondary"
-          data-bs-toggle="modal"
-          data-bs-target="#project-modal"
-        >
-          Edit Profile
-        </button>
-      </div>
+      <div class="d-flex justify-content-end"></div>
     </div>
   </div>
-  <div class="container">
-    <div class="mt-3">
-      <CreatePost />
-    </div>
-    <div class="mt-3">
-      <Post />
-    </div>
-    <Modal id="project-modal">
-      <template #title> Edit Profile </template>
-      <template #body>
-        <div class="row bg-dark p-4 rounded">
-          Cover Image Url
-          <input type="text" />
-          Bio
-          <input type="text" />
-          Profile Picture Url
-          <input type="text" />
-          Email
-          <input type="text" />
-          Github Url
-          <input type="text" />
-          Resume Url
-          <input type="text" />
-        </div>
-      </template>
-      <template #footer>
+
+  <div class="mt-3">
+    <div class="col-12 bg-dark p-4 rounded">
+      <form class="container">
+        Cover Image Url
+        <input class="col-12" type="text" />
+        Bio
+        <input class="col-12" type="text" />
+        Profile Picture Url
+        <input class="col-12" type="text" />
+        Email
+        <input class="col-12" type="text" />
+        Github Url
+        <input class="col-12" type="text" />
+        Resume Url
+        <input class="col-12" type="text" />
         <button class="btn-dark rounded">Save Changes</button>
-      </template>
-    </Modal>
+      </form>
+    </div>
+    <CreatePost />
+  </div>
+  <div class="mt-3">
+    <Post />
   </div>
 </template>
 
