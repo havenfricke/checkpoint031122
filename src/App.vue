@@ -6,12 +6,12 @@
     <router-view />
   </main>
   <footer>
-    <Ads />
+    <Banner />
   </footer>
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed } from "@vue/reactivity";
 import { AppState } from "./AppState";
 export default {
   name: "App",

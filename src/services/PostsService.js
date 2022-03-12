@@ -8,11 +8,18 @@ class PostsService {
     AppState.posts = res.data.posts
     logger.log('get all posts', res.data.posts)
   }
-  // async getAll(query = {}) {
-  //   const res = await api.get('api/posts', { params: query })
-  //   AppState.rawObject = res.data
-  //   logger.log('get whole ass object', res.data)
-  // }
+  async changePage(val) {
+    const res = await api.get('api/posts' + '?page=' + val)
+    AppState.posts = res.data.posts
+    logger.log('get new page', res.data.posts)
+    this.getPageOf()
+  }
+
+  async getPageOf(val) {
+    const res = await api.get('api/posts' + '?page=' + val)
+    AppState.pageOf = res.data
+    logger.log('get pageOf', res.data)
+  }
 
   async createPost(postData) {
     const res = await api.post('api/posts', postData)
@@ -26,8 +33,11 @@ class PostsService {
     logger.log(res.data)
   }
 
-
-
+  async deletePost(id) {
+    const res = await api.delete('api/posts/' + id)
+    AppState.posts = res.data
+    logger.log(res.data)
+  }
 }
 
 export const postsService = new PostsService()

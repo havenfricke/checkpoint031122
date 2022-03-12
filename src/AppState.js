@@ -5,5 +5,8 @@ export const AppState = reactive({
   user: {},
   account: {},
   posts: [],
-  rawObject: []
+  profile: {},
+  banner: [],
+  page: {},
+  pageOf: []
 })

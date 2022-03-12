@@ -18,12 +18,7 @@
         />
       </div>
     </router-link>
-
-    <form action="">
-      <input class="rounded-start" />
-      <button class="btn-success">Search Users</button>
-    </form>
-
+    TheNetwork
     <div
       class="d-flex justify-content-end collapse navbar-collapse"
       id="navbarText"
@@ -130,7 +125,7 @@ a:hover {
   border-bottom-right-radius: 0;
 }
 .hoverable:hover {
-  transform: scale(1.03);
+  transform: scale(1.1);
   box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.3);
   transition: 10ms ease-in-out;
 }
