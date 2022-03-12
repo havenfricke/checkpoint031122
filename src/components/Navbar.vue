@@ -18,15 +18,10 @@
         />
       </div>
     </router-link>
-    <div>
-      <form>
-        <input
-          class="rounded col-8"
-          type="text"
-          placeholder=" Find people..."
-        /><button class="btn-success rounded selectable mx-4">Go!</button>
-      </form>
-    </div>
+
+    <router-link :to="{ name: 'Search' }">
+      <button class="btn btn-success">Search Users</button>
+    </router-link>
 
     <div
       class="d-flex justify-content-end collapse navbar-collapse"
@@ -59,7 +54,7 @@
               :src="user.picture"
               alt="user photo"
               height="40"
-              class="rounded"
+              class="rounded-circle"
             />
             <span class="mx-3 text-success lighten-30">{{ user.name }}</span>
           </div>
@@ -99,7 +94,6 @@ export default {
     return {
       user: computed(() => AppState.user),
       async login() {
-        debugger;
         AuthService.loginWithPopup();
       },
       async logout() {

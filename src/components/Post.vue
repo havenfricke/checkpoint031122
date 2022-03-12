@@ -12,6 +12,7 @@
       justify-content-around
     "
   >
+    <p class="">Post Create time</p>
     <div class="d-flex justify-content-end">
       <div
         class="
@@ -48,7 +49,7 @@
       "
       alt="broken image"
     />
-    <div class="col-10 p-4 fs-2">
+    <div class="col-10 p-3 fs-2">
       Profile Name
       <p class="fs-6 p-1 rounded" min="25" max="2000">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut nisi ipsa
@@ -70,6 +71,13 @@
       >
         32</i
       >
+    </div>
+    <div class="col-12 d-flex justify-content-center">
+      <img
+        class="img-fluid"
+        src="https://i.pinimg.com/originals/8d/60/89/8d6089a1965ba4782dd0f002fb64684b.jpg"
+        alt=""
+      />
     </div>
   </div>
 </template>

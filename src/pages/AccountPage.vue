@@ -1,8 +1,67 @@
 <template>
-  <div class="about text-center">
-    <h1>Welcome {{ user.name }}</h1>
-    <img class="rounded" :src="account.picture" alt="" />
-    <p>{{ user.email }}</p>
+  <Ads />
+  <div class="container">
+    <div>
+      <img
+        class="img-fluid"
+        src="https://media.istockphoto.com/photos/digital-eye-wave-lines-stock-background-stock-video-picture-id1226241649?b=1&k=20&m=1226241649&s=170667a&w=0&h=lXhD5bdn_YT50-ItctUnqB2WiGZ8Jye1GZHjvDsb2Xo="
+        alt=""
+        style="height: 33vh; width: 100vw; overflow: auto background-size: fit;"
+      />
+    </div>
+    <div class="col-12 p-3 bg-light">
+      <img
+        class="rounded-circle img"
+        :src="account.picture"
+        alt=""
+        style="transform: translateY(-5vh)"
+      />
+      <h1>{{ account.name }}</h1>
+      <p>{{ account.bio }} this is my bio</p>
+      <p><i class="mdi mdi-pencil"> </i>{{ account.email }}</p>
+      <p><i class="mdi mdi-pencil"> </i>{{ account.linkedin }}</p>
+      <p><i class="mdi mdi-pencil"> </i>{{ account.github }}</p>
+      <p><i class="mdi mdi-pencil"> </i>{{ account.resume }}</p>
+      <div class="d-flex justify-content-end">
+        <button
+          class="btn btn-secondary"
+          data-bs-toggle="modal"
+          data-bs-target="#project-modal"
+        >
+          Edit Profile
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="mt-3">
+      <CreatePost />
+    </div>
+    <div class="mt-3">
+      <Post />
+    </div>
+    <Modal id="project-modal">
+      <template #title> Edit Profile </template>
+      <template #body>
+        <div class="row bg-dark p-4 rounded">
+          Cover Image Url
+          <input type="text" />
+          Bio
+          <input type="text" />
+          Profile Picture Url
+          <input type="text" />
+          Email
+          <input type="text" />
+          Github Url
+          <input type="text" />
+          Resume Url
+          <input type="text" />
+        </div>
+      </template>
+      <template #footer>
+        <button class="btn-dark rounded">Save Changes</button>
+      </template>
+    </Modal>
   </div>
 </template>
 
@@ -21,7 +80,7 @@ export default {
 </script>
 
 <style scoped>
-img {
+.img {
   max-width: 100px;
 }
 </style>

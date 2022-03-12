@@ -7,6 +7,13 @@
     <div class="row d-flex justify-content-center mt-3 p-2 rounded">
       <Post />
     </div>
+    <div class="row d-flex justify-content-around">
+      <div class="text-center col-12">
+        <i type="button" class="mdi mdi-arrow-left mx-5 p-2"></i>
+        page 1 of 10
+        <i type="button" class="mdi mdi-arrow-right mx-5 p-2"></i>
+      </div>
+    </div>
   </div>
 </template>
 
