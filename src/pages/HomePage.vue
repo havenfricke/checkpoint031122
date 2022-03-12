@@ -4,8 +4,12 @@
     <div class="row p-2 mx-2 rounded">
       <CreatePost />
     </div>
-    <div class="row d-flex justify-content-center mt-3 p-2 rounded">
-      <Post />
+    <div
+      v-for="p in posts"
+      :key="p.id"
+      class="row d-flex justify-content-center mt-3 p-2 rounded"
+    >
+      <Post :post="p" />
     </div>
     <div class="row d-flex justify-content-around">
       <div class="text-center col-12">
@@ -18,8 +22,32 @@
 </template>
 
 <script>
+import { computed } from "@vue/reactivity";
+import { postsService } from "../services/PostsService";
+import { AppState } from "../AppState";
+import { onMounted } from "@vue/runtime-core";
+import { logger } from "../utils/Logger";
 export default {
   name: "Home",
+  setup() {
+    onMounted(async () => {
+      try {
+        await postsService.getAllPosts();
+      } catch (error) {
+        logger.error(error);
+      }
+    });
+    onMounted(async () => {
+      try {
+        await postsService.getAll();
+      } catch (error) {
+        logger.error(error);
+      }
+    });
+    return {
+      posts: computed(() => AppState.posts),
+    };
+  },
 };
 </script>
 

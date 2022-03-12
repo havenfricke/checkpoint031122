@@ -12,7 +12,7 @@
       justify-content-around
     "
   >
-    <p class="">Post Create time</p>
+    <p class="">Post created {{ new Date(post.createdAt) }}</p>
     <div class="d-flex justify-content-end">
       <div
         class="
@@ -26,16 +26,16 @@
       >
         <i
           type="button"
-          class="mdi p-1 rounded-circle mdi-delete selectable"
+          class="mdi p-1 hoverable rounded-circle mdi-delete selectable"
         ></i>
         <i
           type="button"
-          class="mdi p-1 rounded-circle mdi-pencil selectable"
+          class="mdi p-1 hoverable rounded-circle mdi-pencil selectable"
         ></i>
       </div>
     </div>
     <img
-      src="https://thiscatdoesnotexist.com"
+      :src="post.creator.picture"
       style="width: auto; height: 20vh"
       class="
         img-fluid
@@ -50,40 +50,48 @@
       alt="broken image"
     />
     <div class="col-10 p-3 fs-2">
-      Profile Name
+      {{ post.creator.name }}
+      <p>{{ post.graduated }}</p>
       <p class="fs-6 p-1 rounded" min="25" max="2000">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut nisi ipsa
-        libero perspiciatis doloremque dolores maxime, fugit temporibus itaque
-        suscipit dolor quod sit ullam porro iure similique vel nobis quae.
+        {{ post.body }}
       </p>
     </div>
-    <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-end"></div>
+    <div class="col-6 d-flex justify-content-center">
+      <img
+        v-if="post.imgUrl"
+        class="img-fluid bg-dark"
+        :src="post.imgUrl"
+        alt=""
+      />
+    </div>
+    <div class="row p-3 d-flex justify-content-end">
       <i
         type="button"
         class="
           mdi mdi-thumb-up
-          selectable
+          col-lg-1 col-md-1 col-sm-2
           rounded-circle
+          selectable
           hoverable
-          text-end
+          text-center
           p-2
         "
       >
-        32</i
+        {{ post.likeIds.length }}</i
       >
-    </div>
-    <div class="col-12 d-flex justify-content-center">
-      <img
-        class="img-fluid"
-        src="https://i.pinimg.com/originals/8d/60/89/8d6089a1965ba4782dd0f002fb64684b.jpg"
-        alt=""
-      />
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    post: {
+      type: Object,
+      required: true,
+    },
+  },
   setup() {
     return {};
   },
@@ -94,6 +102,10 @@ export default {
 .hoverable:hover {
   transform: scale(1.01);
   box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.3);
+  transition: 10ms ease-in-out;
+}
+.hoverable:active {
+  transform: scale(0.77);
   transition: 10ms ease-in-out;
 }
 </style>
