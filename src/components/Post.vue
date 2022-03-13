@@ -93,7 +93,8 @@ export default {
     const router = useRouter();
     return {
       activeProfile() {
-        postsService.activeProfile(props.post);
+        postsService.getProfile(props.post.creatorId);
+        postsService.getProfilePosts(props.post.creatorId);
       },
       goTo(page) {
         router.push({

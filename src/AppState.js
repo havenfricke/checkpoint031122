@@ -9,5 +9,6 @@ export const AppState = reactive({
   banner: [],
   page: {},
   pageOf: [],
-  activeProfile: {}
+  activeProfile: {},
+  activePosts: {}
 })
