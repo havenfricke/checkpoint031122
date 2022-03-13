@@ -20,23 +20,24 @@
           ></i>
         </div>
       </div>
-
-      <img
-        @click="activeProfile, goTo('Profile')"
-        :src="post.creator.picture"
-        style="width: auto; height: 20vh"
-        class="
-          img-fluid
-          rounded-circle
-          p-0
-          d-flex
-          flex-column
-          col-4
-          selectable
-          hoverable
-        "
-        alt=""
-      />
+      <button @click="activeProfile">
+        <img
+          @click="goTo('Profile')"
+          :src="post.creator.picture"
+          style="width: auto; height: 20vh"
+          class="
+            img-fluid
+            rounded
+            p-0
+            d-flex
+            flex-column
+            col-4
+            selectable
+            hoverable
+          "
+          alt=""
+        />
+      </button>
       <div class="col-10 p-1 fs-2">
         {{ post.creator.name }}
         <p>{{ post.graduated }}</p>
@@ -76,7 +77,6 @@
 </template>
 
 <script>
-import { computed, watchEffect } from "@vue/runtime-core";
 import { AppState } from "../AppState";
 import { postsService } from "../services/PostsService";
 import { logger } from "../utils/Logger";
@@ -92,12 +92,13 @@ export default {
   setup(props) {
     const router = useRouter();
     return {
-        goTo(page) {
-        router.push({
-          name: page,
-          params: { id: AppState.activePost.creatorId },
       activeProfile() {
         postsService.activeProfile(props.post.creatorId);
+      },
+      goTo(page) {
+        router.push({
+          name: page,
+        });
       },
       async like() {
         try {

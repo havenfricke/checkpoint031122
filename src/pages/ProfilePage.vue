@@ -1,6 +1,7 @@
 <template>
   <div>
-     <Ads />
+    this is the profile page
+    <!-- <Ads />
   <div class="container">
     <div>
       <img
@@ -24,7 +25,7 @@
       <p><i class="mdi mdi-pencil"> </i>{{ profile.github }}</p>
       <p><i class="mdi mdi-pencil"> </i>{{ profile.resume }}</p>
       <div class="d-flex justify-content-end"></div>
-    </div>
+    </div> -->
   </div>
 </template>
 
