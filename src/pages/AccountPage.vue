@@ -6,7 +6,12 @@
         class="img-fluid"
         :src="account.coverImg"
         alt=""
-        style="height: 33vh; width: 100vw; overflow: auto background-size: cover;"
+        style="
+          height: 33vh;
+          width: 100vw;
+          overflow: auto;
+          background-size: contain;
+        "
       />
     </div>
     <div class="col-12 p-3 bg-light">

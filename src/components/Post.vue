@@ -40,12 +40,16 @@
           alt=""
         />
       </button>
-      <div class="col-10 p-1 fs-2">
-        <b>{{ post.creator.name }}</b>
-        <p v-if="post.creator.class" class="fs-6">{{ post.creator.class }}</p>
-        <p class="fs-6 p-1 rounded" min="25" max="2000">
-          {{ post.body }}
-        </p>
+      <div class="row p-1 fs-2">
+        <div class="col-12">
+          <b class="fs-4" style="word-wrap: break-word">{{
+            post.creator.name
+          }}</b>
+          <p v-if="post.creator.class" class="fs-6">{{ post.creator.class }}</p>
+          <p class="fs-6 p-1 rounded" min="25" max="2000">
+            {{ post.body }}
+          </p>
+        </div>
       </div>
       <div class="d-flex justify-content-end"></div>
       <div class="col-12 d-flex justify-content-center">

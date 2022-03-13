@@ -1,6 +1,9 @@
 <template>
   <form @submit.prevent="createPost">
-    <div class="col-12 p-3 rounded bg-light shadow">
+    <div
+      v-if="user.id !== account.id"
+      class="col-12 p-3 rounded bg-light shadow"
+    >
       <div class="p-2">
         <input
           v-model="state.editable.body"
@@ -28,6 +31,7 @@
 import { computed, reactive } from "@vue/reactivity";
 import { postsService } from "../services/PostsService";
 import { logger } from "../utils/Logger";
+import { AppState } from "../AppState";
 
 export default {
   setup() {
@@ -43,6 +47,8 @@ export default {
           logger.error(error);
         }
       },
+      user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
     };
   },
 };
