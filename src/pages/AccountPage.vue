@@ -4,7 +4,7 @@
     <div>
       <img
         class="img-fluid"
-        src="https://media.istockphoto.com/photos/digital-eye-wave-lines-stock-background-stock-video-picture-id1226241649?b=1&k=20&m=1226241649&s=170667a&w=0&h=lXhD5bdn_YT50-ItctUnqB2WiGZ8Jye1GZHjvDsb2Xo="
+        :src="account.coverImg"
         alt=""
         style="height: 33vh; width: 100vw; overflow: auto background-size: fit;"
       />
@@ -17,7 +17,7 @@
         style="transform: translateY(-5vh)"
       />
       <h1>{{ account.name }}</h1>
-      <p>{{ account.bio }} this is my bio</p>
+      <p>{{ account.bio }}</p>
       <p><i class="mdi mdi-pencil"> </i>{{ account.email }}</p>
       <p><i class="mdi mdi-pencil"> </i>{{ account.linkedin }}</p>
       <p><i class="mdi mdi-pencil"> </i>{{ account.github }}</p>
@@ -30,18 +30,22 @@
     <div class="col-12 bg-dark p-4 rounded">
       <form class="container">
         Cover Image Url
-        <input class="col-12" type="text" />
+        <input v-model="editable.coverImg" class="col-12" type="text" />
         Bio
-        <input class="col-12" type="text" />
+        <input v-model="editable.bio" class="col-12" type="text" />
         Profile Picture Url
-        <input class="col-12" type="text" />
+        <input v-model="editable.picture" class="col-12" type="text" />
         Email
-        <input class="col-12" type="text" />
+        <input v-model="editable.email" class="col-12" type="text" />
         Github Url
-        <input class="col-12" type="text" />
+        <input v-model="editable.github" class="col-12" type="text" />
         Resume Url
-        <input class="col-12" type="text" />
-        <button class="btn-dark rounded">Save Changes</button>
+        <input v-model="editable.resume" class="col-12" type="text" />
+        Linkedin Url
+        <input v-model="editable.linkedin" class="col-12" type="text" />
+        <button type="button" class="btn-dark rounded" @click="update">
+          Save Changes
+        </button>
       </form>
     </div>
     <CreatePost />
@@ -52,12 +56,25 @@
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed, ref, watchEffect } from "vue";
 import { AppState } from "../AppState";
+import { accountService } from "../services/AccountService";
 export default {
   name: "Account",
   setup() {
+    const editable = ref({});
+    watchEffect(() => {
+      editable.value = AppState.account;
+    });
     return {
+      editable,
+      async update() {
+        try {
+          await accountService.update(editable.value);
+        } catch (error) {
+          logger.error(error);
+        }
+      },
       account: computed(() => AppState.account),
       user: computed(() => AppState.user),
     };

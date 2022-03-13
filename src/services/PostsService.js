@@ -38,6 +38,12 @@ class PostsService {
     AppState.posts = res.data
     logger.log(res.data)
   }
+
+  getPostsById(query = {}) {
+    const res = await api.get('api/posts')
+    AppState.posts = res.data
+    logger.log
+  }
 }
 
 export const postsService = new PostsService()

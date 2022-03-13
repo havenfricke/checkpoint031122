@@ -17,6 +17,7 @@ class AccountService {
     const res = await api.put('/account', updateBody)
     logger.log('Edit Account', res.data)
     AppState.account = res.data
+    AppState.profile = res.data
   }
 }
 
