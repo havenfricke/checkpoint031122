@@ -13,7 +13,7 @@
         class="rounded-circle img"
         :src="profile.picture"
         alt=""
-        style="transform: translateY(-5vh)"
+        style="width: auto; height: 20vh; transform: translateY(-5vh)"
       />
       <h1>{{ profile.name }}</h1>
       <p>{{ profile.bio }}</p>
@@ -23,9 +23,28 @@
       <p><i class="mdi mdi-pencil"> </i>{{ profile.resume }}</p>
       <div class="d-flex justify-content-end"></div>
     </div>
-  </div>
-  <div v-for="p in posts" :key="p.id">
-    <Post :post="p" />
+    <div
+      class="row d-flex justify-content-center mt-3 p-2 rounded"
+      v-for="p in posts"
+      :key="p.id"
+    >
+      <Post :post="p" />
+    </div>
+    <div class="row d-flex justify-content-around">
+      <div class="text-center col-12">
+        <i
+          @click="changePage(-1)"
+          type="button"
+          class="mdi mdi-arrow-left mx-3 p-2"
+        ></i>
+        Newer Posts | Older Posts
+        <i
+          @click="changePage(2)"
+          type="button"
+          class="mdi mdi-arrow-right mx-3 p-2"
+        ></i>
+      </div>
+    </div>
   </div>
 </template>
 

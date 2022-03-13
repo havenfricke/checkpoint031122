@@ -48,10 +48,6 @@
         </button>
       </form>
     </div>
-    <CreatePost />
-  </div>
-  <div class="mt-3">
-    <Post />
   </div>
 </template>
 

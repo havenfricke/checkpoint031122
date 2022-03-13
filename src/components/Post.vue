@@ -20,18 +20,19 @@
           ></i>
         </div>
       </div>
-      <button @click="activeProfile">
+      <button class="rounded-circle" @click="activeProfile">
         <img
           @click="goTo('Profile')"
           :src="post.creator.picture"
-          style="width: auto; height: 20vh"
+          style="width: auto; height: 10vh"
           class="
+            rounded-circle
             img-fluid
             rounded
             p-0
             d-flex
             flex-column
-            col-4
+            col-2
             selectable
             hoverable
           "
