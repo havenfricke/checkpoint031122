@@ -51,12 +51,21 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState";
+import { postsService } from "../services/PostsService";
+import { logger } from "../utils/Logger";
 export default {
   name: "Profile",
   setup() {
     return {
       posts: computed(() => AppState.activePosts.posts),
       profile: computed(() => AppState.activeProfile),
+      async changePage(val) {
+        try {
+          await postsService.changePageProfile(val);
+        } catch (error) {
+          logger.error(error);
+        }
+      },
     };
   },
 };

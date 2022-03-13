@@ -51,6 +51,12 @@ class PostsService {
     logger.log('get active profile posts', res.data)
   }
 
+  async changePageProfile(val, id) {
+    id = AppState.activeProfile.id
+    const res = await api.get('api/posts' + '?creatorId=' + id + '&page=' + val)
+    AppState.activePosts = res.data
+    logger.log('changed page on profile page', res.data, AppState.activePosts)
+  }
 }
 
 export const postsService = new PostsService()
