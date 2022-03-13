@@ -39,10 +39,9 @@ class PostsService {
     logger.log(res.data)
   }
 
-  getPostsById(query = {}) {
-    const res = await api.get('api/posts')
-    AppState.posts = res.data
-    logger.log
+  activeProfile(profile) {
+    AppState.activeProfile = profile
+    logger.log(AppState.activeProfile)
   }
 }
 

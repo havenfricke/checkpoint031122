@@ -21,6 +21,7 @@
         </div>
       </div>
       <img
+        @click="activeProfile"
         :src="post.creator.picture"
         style="width: auto; height: 20vh"
         class="
@@ -79,6 +80,7 @@ import { AppState } from "../AppState";
 import { postsService } from "../services/PostsService";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
+import { useRouter } from "vue-router";
 export default {
   props: {
     post: {
@@ -88,6 +90,9 @@ export default {
   },
   setup(props) {
     return {
+      activeProfile() {
+        postsService.activeProfile(props.post.creatorId);
+      },
       async like() {
         try {
           await postsService.like(props.post.id);
