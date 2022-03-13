@@ -6,7 +6,7 @@
         class="img-fluid"
         :src="account.coverImg"
         alt=""
-        style="height: 33vh; width: 100vw; overflow: auto background-size: fit;"
+        style="height: 33vh; width: 100vw; overflow: auto background-size: cover;"
       />
     </div>
     <div class="col-12 p-3 bg-light">
@@ -18,10 +18,19 @@
       />
       <h1>{{ account.name }}</h1>
       <p>{{ account.bio }}</p>
-      <p><i class="mdi mdi-pencil"> </i>{{ account.email }}</p>
-      <p><i class="mdi mdi-pencil"> </i>{{ account.linkedin }}</p>
-      <p><i class="mdi mdi-pencil"> </i>{{ account.github }}</p>
-      <p><i class="mdi mdi-pencil"> </i>{{ account.resume }}</p>
+      <p>{{ account.class }}</p>
+      <p>Graduated From Codeworks: {{ account.graduated }}</p>
+      <p><i class="mdi mdi-email-outline"> </i> {{ account.email }}</p>
+
+      <a v-if="account.linkedin" :href="account.linkedin"
+        ><p><i class="mdi mdi-linkedin"> Linkedin</i></p></a
+      >
+      <a v-if="account.github" :href="account.github"
+        ><p><i class="mdi mdi-github"> Github</i></p></a
+      >
+      <a v-if="account.resume" :href="account.resume"
+        ><p><i class="mdi mdi-file-outline"> Resume</i></p></a
+      >
       <div class="d-flex justify-content-end"></div>
     </div>
   </div>
@@ -43,6 +52,8 @@
         <input v-model="editable.resume" class="col-12" type="text" />
         Linkedin Url
         <input v-model="editable.linkedin" class="col-12" type="text" />
+        Current Class
+        <input v-model="editable.class" class="col-12" type="text" />
         <button type="button" class="btn-dark rounded" @click="update">
           Save Changes
         </button>

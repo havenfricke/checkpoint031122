@@ -17,10 +17,19 @@
       />
       <h1>{{ profile.name }}</h1>
       <p>{{ profile.bio }}</p>
-      <p><i class="mdi mdi-pencil"> </i>{{ profile.email }}</p>
-      <p><i class="mdi mdi-pencil"> </i>{{ profile.linkedin }}</p>
-      <p><i class="mdi mdi-pencil"> </i>{{ profile.github }}</p>
-      <p><i class="mdi mdi-pencil"> </i>{{ profile.resume }}</p>
+      <p>{{ profile.class }}</p>
+      <p>Graduated From Codeworks: {{ profile.graduated }}</p>
+      <p><i class="mdi mdi-email-outline"> </i> {{ profile.email }}</p>
+
+      <a v-if="profile.linkedin" :href="profile.linkedin"
+        ><p><i class="mdi mdi-linkedin"> Linkedin</i></p></a
+      >
+      <a v-if="profile.github" :href="profile.github"
+        ><p><i class="mdi mdi-github"> Github</i></p></a
+      >
+      <a v-if="profile.resume" :href="profile.resume"
+        ><p><i class="mdi mdi-file-outline"> Resume</i></p></a
+      >
       <div class="d-flex justify-content-end"></div>
     </div>
     <div
@@ -53,6 +62,7 @@ import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState";
 import { postsService } from "../services/PostsService";
 import { logger } from "../utils/Logger";
+import { onMounted } from "@vue/runtime-core";
 export default {
   name: "Profile",
   setup() {
