@@ -20,8 +20,9 @@
           ></i>
         </div>
       </div>
+
       <img
-        @click="activeProfile"
+        @click="activeProfile, goTo('Profile')"
         :src="post.creator.picture"
         style="width: auto; height: 20vh"
         class="
@@ -89,7 +90,12 @@ export default {
     },
   },
   setup(props) {
+    const router = useRouter();
     return {
+        goTo(page) {
+        router.push({
+          name: page,
+          params: { id: AppState.activePost.creatorId },
       activeProfile() {
         postsService.activeProfile(props.post.creatorId);
       },
