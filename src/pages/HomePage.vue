@@ -63,6 +63,7 @@ export default {
         logger.error(error);
       }
     });
+    watchEffect(() => AppState.posts), computed(() => AppState.posts);
     watchEffect(async () => {
       try {
         await postsService.getPageOf();

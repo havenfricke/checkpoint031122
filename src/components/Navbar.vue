@@ -18,7 +18,7 @@
         />
       </div>
     </router-link>
-    TheNetwork
+    <b class="fs-3">TheNetwork</b>
     <div
       class="d-flex justify-content-end collapse navbar-collapse"
       id="navbarText"

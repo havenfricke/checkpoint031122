@@ -29,13 +29,13 @@ class PostsService {
 
   async like(id) {
     const res = await api.post('api/posts/' + id + '/like')
-    AppState.posts = res.data
+    AppState.posts = [...AppState.posts, res.data]
     logger.log(res.data)
   }
 
   async deletePost(id) {
     const res = await api.delete('api/posts/' + id)
-    AppState.posts = res.data
+    AppState.posts = [...AppState.posts, res.data]
     logger.log(res.data)
   }
 

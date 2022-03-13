@@ -14,6 +14,7 @@
           "
         >
           <i
+            v-if="post.creatorId == account.id"
             @click="deletePost"
             type="button"
             class="mdi mx-1 p-1 hoverable rounded-circle mdi-delete selectable"
@@ -40,8 +41,8 @@
         />
       </button>
       <div class="col-10 p-1 fs-2">
-        {{ post.creator.name }}
-        <p>{{ post.graduated }}</p>
+        <b>{{ post.creator.name }}</b>
+        <p v-if="post.creator.class" class="fs-6">{{ post.creator.class }}</p>
         <p class="fs-6 p-1 rounded" min="25" max="2000">
           {{ post.body }}
         </p>
@@ -83,6 +84,7 @@ import { postsService } from "../services/PostsService";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 import { useRouter } from "vue-router";
+import { computed } from "@vue/reactivity";
 export default {
   props: {
     post: {
@@ -120,6 +122,7 @@ export default {
           logger.error(error);
         }
       },
+      account: computed(() => AppState.account),
     };
   },
 };
