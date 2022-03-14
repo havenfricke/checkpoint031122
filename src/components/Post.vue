@@ -2,7 +2,7 @@
   <div class="row mx-5 mt-2 d-flex justify-content-around">
     <div class="col-lg-8 col-md-10 col-sm-12 border bg-light rounded shadow">
       <div class="d-flex justify-content-end align-items-center">
-        <p class="col-8">Post created {{ new Date(post.createdAt) }}</p>
+        <p class="col-10">Post created {{ new Date(post.createdAt) }}</p>
         <div
           class="
             fs-2
@@ -25,11 +25,10 @@
         <img
           @click="goTo('Profile')"
           :src="post.creator.picture"
-          style="width: auto; height: 10vh"
+          style="background-size: cover; width: auto; height: 10vh"
           class="
             rounded-circle
             img-fluid
-            rounded
             p-0
             d-flex
             flex-column

@@ -13,12 +13,13 @@
         <img
           class="rounded-circle hoverable"
           alt="logo"
-          src="https://www.vhv.rs/dpng/d/244-2448537_spartan-png-world-wide-web-icon-png-transparent.png"
-          height="45"
+          src="https://64.media.tumblr.com/27a5d0a155ec89fccd6dfae0167f93c2/tumblr_pd0uiulnGI1rqnly5_500.gifv"
+          height="50"
+          label="home"
         />
       </div>
     </router-link>
-    <b class="fs-3">TheNetwork</b>
+    <b class="fs-3">theNetwork()</b>
     <div
       class="d-flex justify-content-end collapse navbar-collapse"
       id="navbarText"

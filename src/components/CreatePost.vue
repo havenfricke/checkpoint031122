@@ -6,6 +6,7 @@
     >
       <div class="p-2">
         <input
+          required
           v-model="state.editable.body"
           class="col-12 p-1"
           type="text"

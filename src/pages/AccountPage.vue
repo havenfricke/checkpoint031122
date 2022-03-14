@@ -7,7 +7,7 @@
         :src="account.coverImg"
         alt=""
         style="
-          height: 33vh;
+          height: 40vh;
           width: 100vw;
           overflow: auto;
           background-size: contain;
