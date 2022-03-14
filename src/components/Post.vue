@@ -2,7 +2,9 @@
   <div class="row mx-5 mt-2 d-flex justify-content-around">
     <div class="col-lg-8 col-md-10 col-sm-12 border bg-light rounded shadow">
       <div class="d-flex justify-content-end align-items-center">
-        <p class="col-10">Post created {{ new Date(post.createdAt) }}</p>
+        <p class="col-10">
+          Post created {{ new Date(post.createdAt).toLocaleString() }}
+        </p>
         <div
           class="
             fs-2
@@ -114,6 +116,7 @@ export default {
       goTo(page) {
         router.push({
           name: page,
+          params: { id: props.post.creatorId },
         });
       },
       async like() {
@@ -126,7 +129,7 @@ export default {
       },
       async deletePost() {
         try {
-          if (await Pop.confirm) {
+          if (await Pop.confirm()) {
             await postsService.deletePost(props.post.id);
           }
           logger.log(props.post.id);

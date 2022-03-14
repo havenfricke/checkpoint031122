@@ -62,10 +62,27 @@ import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState";
 import { postsService } from "../services/PostsService";
 import { logger } from "../utils/Logger";
-import { onMounted } from "@vue/runtime-core";
+import { onMounted, watchEffect } from "@vue/runtime-core";
+import { useRoute } from "vue-router";
 export default {
   name: "Profile",
+
+  // props: {
+  //   post: {
+  //     type: Object,
+  //     required: true,
+  //   },
+  // },
   setup() {
+    const route = useRoute();
+    watchEffect(async () => {
+      try {
+        postsService.getProfile(route.params.id);
+        postsService.getProfilePosts(route.params.id);
+      } catch (error) {
+        logger.error(error);
+      }
+    });
     return {
       posts: computed(() => AppState.activePosts.posts),
       profile: computed(() => AppState.activeProfile),

@@ -56,13 +56,7 @@ export default {
         logger.error(error);
       }
     });
-    watchEffect(async () => {
-      try {
-        await postsService.getPage();
-      } catch (error) {
-        logger.error(error);
-      }
-    });
+
     watchEffect(() => AppState.posts), computed(() => AppState.posts);
     watchEffect(async () => {
       try {
