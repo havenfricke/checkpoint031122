@@ -17,7 +17,16 @@
             v-if="post.creatorId == account.id"
             @click="deletePost"
             type="button"
-            class="mdi mx-1 p-1 hoverable rounded-circle mdi-delete selectable"
+            class="
+              mdi
+              mx-1
+              col-2
+              p-1
+              hoverable
+              rounded-circle
+              mdi-delete
+              selectable
+            "
           ></i>
         </div>
       </div>
